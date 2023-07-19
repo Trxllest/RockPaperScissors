@@ -77,7 +77,7 @@ function playRound(playerSelection, computerSelection) {
 // -----------------------------------------------------------
 
 // game function
-function game() {
+function playGame() {
     // varaible for player and computer score
     let playerScore = 0;
     let computerScore = 0;
@@ -96,7 +96,8 @@ function game() {
         console.log('choice at line 96 ' + playerChoice);
 
         // handle invalid choice
-        while (playerChoice !== 'rock' && playerChoice !== 'paper' && playerChoice !== 'scissors') {
+        while (playerChoice !== 'rock' && playerChoice !== 'paper' && 
+            playerChoice !== 'scissors') {
             console.log('choice at line 100 ' + playerChoice);
             playerChoice = prompt('Try again').toLowerCase();
             console.log('choice at line 102 ' + playerChoice);
@@ -136,4 +137,4 @@ function game() {
     
 }
 
-game()
+playGame();
