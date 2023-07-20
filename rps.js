@@ -85,11 +85,17 @@ function playRound(e) {
         playerScore = 0;
         cpuScore = 0;
     }
+    updateScoreBox(playerScore, cpuScore);
     
+
     console.log(`The score is ${playerScore}||${cpuScore}`);
 
 } 
 
+function updateScoreBox(playerScore, computerScore) {
+    document.querySelector('.pScore').textContent = playerScore;
+    document.querySelector('.cScore').textContent = computerScore;
+}
 // Test playRound
 // const playerSelection = "rock";
 // const computerSelection = getComputerChoice();
