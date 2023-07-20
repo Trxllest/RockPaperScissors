@@ -19,23 +19,27 @@ function getComputerChoice() {
 
 // console.log(getComputerChoice());
 
-function playRound(playerSelection, computerSelection) {
+function playRound(e) {
     // convert both player and cpu selection to lowercase
-    let lowerCasePlayerChoice = playerSelection.toLowerCase()
-    let lowerCaseComputerChoice = computerSelection.toLowerCase()
+    let lowerCasePlayerChoice = e.target.textContent.toLowerCase();
+    let lowerCaseComputerChoice = getComputerChoice().toLowerCase();
+    const results = document.getElementById('results');
     
     // Compare selections
     
     // player selects Rock
     if (lowerCasePlayerChoice === options[0].toLowerCase()) {
         if (lowerCaseComputerChoice === options[1].toLowerCase()) {
-            console.log('You Lose! Paper beats Rock');
+            // console.log('You Lose! Paper beats Rock');
+            results.textContent = 'You Lose! Paper beats Rock';
             return 1;
         } else if (lowerCaseComputerChoice === options[2].toLowerCase()) {
-            console.log('You Win! Rock beats Scissors');
+            // console.log('You Win! Rock beats Scissors');
+            results.textContent = 'You Win! Rock beats Scissors'
             return 2;
         } else {
-            console.log('You It\'s a Draw! We both chose Rock');
+            // console.log('It\'s a Draw! We both chose Rock');
+            results.textContent = 'It\'s a Draw! We both chose Rock'
             return 0;
         }
     }
@@ -43,13 +47,13 @@ function playRound(playerSelection, computerSelection) {
     // player selects Paper
     if (lowerCasePlayerChoice === options[1].toLowerCase()) {
         if (lowerCaseComputerChoice === options[2].toLowerCase()) {
-            console.log('You Lose! Scissors beats Paper');
+            results.textContent = 'You Lose! Scissors beats Paper';
             return 1;
         } else if (lowerCaseComputerChoice === options[0].toLowerCase()) {
-            console.log('You Win! Paper beats Rock');
+            results.textContent = 'You Win! Paper beats Rock';
             return 2;
         } else {
-            console.log('You It\'s a Draw! We both chose Paper');
+            results.textContent = 'It\'s a Draw! We both chose Paper';
             return 0;
         }
     }
@@ -57,13 +61,13 @@ function playRound(playerSelection, computerSelection) {
     // Player selects scissors
     if (lowerCasePlayerChoice === options[2].toLowerCase()) {
         if (lowerCaseComputerChoice === options[0].toLowerCase()) {
-            console.log('You Lose! Rock beats Scissors');
+            results.textContent = 'You Lose! Rock beats Scissors';
             return 1;
         } else if (lowerCaseComputerChoice === options[1].toLowerCase()) {
-            console.log('You Win! Scissors beats Paper');
+            results.textContent = 'You Win! Scissors beats Paper';
             return 2;
         } else {
-            console.log('You It\'s a Draw! We both chose Scissors');
+            results.textContent = 'It\'s a Draw! We both chose Scissors';
             return 0;
         }
     }
@@ -137,4 +141,11 @@ function playGame() {
     
 }
 
-playGame();
+const rock = document.getElementById('rockButton');
+const paper = document.getElementById('paperButton');
+const scissors = document.getElementById('scissorsButton');
+
+rock.addEventListener('click', function(e) {playRound(e)});
+paper.addEventListener('click', function(e) {playRound(e)});
+scissors.addEventListener('click', function(e) {playRound(e)});
+
